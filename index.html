@@ -57,7 +57,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <a href="#servicios">Servicios</a>
 
-      <a href="#trabajos">Trabajos</a>
+      <a href="#galeria">Galería</a>
 
       <a href="#secretos">Secretos del Agua</a>
 
@@ -121,8 +121,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       Servicios
     </a>
 
-    <a href="#trabajos">
-      Nuestros trabajos
+    <a href="#galeria">
+      Galería
     </a>
 
     <a href="#secretos">
@@ -779,12 +779,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   </section>
 
-
-  <!-- TRABAJOS -->
+  <!-- GALERÍA -->
 
   <section
     class="section works"
-    id="trabajos"
+    id="galeria"
   >
 
     <div class="container">
@@ -794,16 +793,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div>
 
           <p class="eyebrow dark">
-            NUESTROS TRABAJOS
+            GALERÍA
           </p>
 
           <h2>
-            Resultados reales,<br>
-            <em>cuidado real.</em>
+            Nuestro espacio,<br>
+            <em>nuestros trabajos.</em>
           </h2>
 
         </div>
-
 
         <a
           class="text-link"
@@ -816,44 +814,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       </div>
 
+      <!-- CATEGORÍAS -->
 
-      <div class="gallery">
+      <div class="gallery-categories" id="galleryCategories">
 
-        <figure class="gallery-card gallery-main">
+        <button
+          class="gallery-category active"
+          type="button"
+          data-gallery="salas"
+        >
+          <span class="gallery-category-number">01</span>
+          <span class="gallery-category-title">Salas</span>
+          <span class="gallery-category-arrow">→</span>
+        </button>
 
-          <img
-            src="assets/peinado4.jpeg"
-            alt="Trabajo de peluquería realizado en Beatriz Gálvez"
-          >
-
-        </figure>
-
-
-        <figure class="gallery-card">
-
-          <img
-            src="assets/peinado1.jpeg"
-            alt="Corte y acabado realizado en el centro"
-          >
-
-        </figure>
-
-
-        <figure class="gallery-card">
-
-          <img
-            src="assets/peinado2.jpeg"
-          >
-
-        </figure>
+        <button
+          class="gallery-category"
+          type="button"
+          data-gallery="belleza"
+        >
+          <span class="gallery-category-number">02</span>
+          <span class="gallery-category-title">Belleza</span>
+          <span class="gallery-category-arrow">→</span>
+        </button>
 
       </div>
 
+      <!-- FOTOS -->
+
+      <div class="gallery-view" id="galleryView">
+
+        <div class="gallery-view-header">
+          <div>
+            <p class="eyebrow dark">GALERÍA</p>
+            <h3 id="galleryTitle">Salas</h3>
+          </div>
+
+          <button
+            class="gallery-back"
+            id="galleryBack"
+            type="button"
+          >
+            ← Cambiar categoría
+          </button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid"></div>
+
+      </div>
 
       <p class="gallery-caption">
-
         Descubre más trabajos y novedades en
-
         <a
           href="https://www.instagram.com/bellezaybienestarbeatrizgalvez/"
           target="_blank"
@@ -861,7 +872,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         >
           @bellezaybienestarbeatrizgalvez
         </a>
-
       </p>
 
     </div>
@@ -1073,8 +1083,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         Servicios
       </a>
 
-      <a href="#trabajos">
-        Nuestros trabajos
+      <a href="#galeria">
+        Galería
       </a>
 
       <a href="#secretos">

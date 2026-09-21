@@ -139,7 +139,7 @@ h2 em,h1 em{font-style:italic;color:var(--olive)}
 .secretos-content>p:not(.eyebrow){max-width:550px;margin:0 auto 32px;font-size:14px;line-height:1.85;color:rgba(255,255,255,.82)}
 
 /* ================================
-   GALERÍA — TRABAJOS
+   GALERÍA
 ================================ */
 
 .works{
@@ -157,150 +157,214 @@ h2 em,h1 em{font-style:italic;color:var(--olive)}
   align-self:end;
 }
 
+/* CATEGORÍAS */
 
-/* ================================
-   ESTRUCTURA DE LA GALERÍA
-================================ */
-
-.gallery{
+.gallery-categories{
   display:grid;
-
-  /* La grande un poco más estrecha */
-  grid-template-columns:1fr 0.82fr;
-
-  /* Fotos de la derecha más grandes */
-  grid-template-rows:400px 400px;
-
-  /* SIN ESPACIO ENTRE FOTOS */
-  gap:0;
-
-  width:100%;
-
-  /* Marco exterior */
-  border:2px solid var(--paper);
-
-  overflow:hidden;
+  grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  margin-bottom:55px;
 }
 
-
-/* ================================
-   TARJETAS
-================================ */
-
-.gallery-card{
-  margin:0;
+.gallery-category{
   position:relative;
-  overflow:hidden;
-
+  min-height:230px;
+  padding:35px 38px;
+  border:0;
+  border-right:1px solid var(--line);
   background:transparent;
-
+  color:var(--ink);
+  text-align:left;
+  cursor:pointer;
   display:flex;
-  align-items:center;
-  justify-content:center;
-
-  /* Línea fina entre fotografías */
-  border:1px solid var(--paper);
+  flex-direction:column;
+  justify-content:space-between;
+  transition:.3s ease;
 }
 
-
-/* Foto grande ocupa las dos filas */
-
-.gallery-main{
-  grid-row:span 2;
+.gallery-category:last-child{
+  border-right:0;
 }
 
+.gallery-category:hover,
+.gallery-category.active{
+  background:var(--paper);
+}
 
-/* ================================
-   IMÁGENES
-================================ */
+.gallery-category-number{
+  font-size:10px;
+  letter-spacing:.16em;
+  color:var(--olive);
+}
 
-.gallery-card img{
+.gallery-category-title{
+  font:500 clamp(45px,5vw,72px)/.9 var(--serif);
+  letter-spacing:-.035em;
+}
+
+.gallery-category-arrow{
+  position:absolute;
+  right:35px;
+  bottom:30px;
+  font-size:28px;
+  color:var(--olive);
+  transition:.25s ease;
+}
+
+.gallery-category:hover .gallery-category-arrow,
+.gallery-category.active .gallery-category-arrow{
+  transform:translateX(6px);
+}
+
+/* VISTA DE FOTOS */
+
+.gallery-view{
+  display:none;
+  animation:galleryFade .35s ease;
+}
+
+.gallery-view.open{
+  display:block;
+}
+
+@keyframes galleryFade{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.gallery-view-header{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:30px;
+}
+
+.gallery-view-header h3{
+  font:500 clamp(48px,6vw,75px)/.9 var(--serif);
+  letter-spacing:-.04em;
+  margin:15px 0 0;
+}
+
+.gallery-back{
+  border:0;
+  border-bottom:1px solid var(--olive);
+  background:none;
+  padding:0 0 6px;
+  color:var(--olive-dark);
+  font:600 10px var(--sans);
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+
+.gallery-back:hover{
+  opacity:.65;
+}
+
+/* CUADRÍCULA */
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+
+.gallery-photo{
+  margin:0;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  background:var(--paper2);
+  cursor:pointer;
+}
+
+.gallery-photo img{
   width:100%;
   height:100%;
-
   display:block;
-
   object-fit:cover;
-  object-position:center;
-
   transition:transform .5s ease;
 }
 
-
-/* La fotografía grande ligeramente
-   menos ampliada */
-
-.gallery-main img{
-  object-fit:cover;
-  object-position:center;
-  transform:scale(.96);
+.gallery-photo:hover img{
+  transform:scale(1.045);
 }
 
-
-/* Las fotografías pequeñas
-   ligeramente más grandes */
-
-.gallery-card:not(.gallery-main) img{
-  transform:scale(.98);
-}
-
-
-/* Efecto suave al pasar el ratón */
-
-.gallery-card:hover img{
-  transform:scale(1.01);
-}
-
-
-/* ================================
-   TEXTO DE INSTAGRAM
-================================ */
+/* TEXTO INSTAGRAM */
 
 .gallery-caption{
   margin:28px 0 0;
   padding:28px 20px;
-
   text-align:center;
-
   background:rgba(255,255,255,.3);
-
   border:1px solid var(--line);
-
   font-family:var(--serif);
-
   font-size:24px;
   line-height:1.3;
-
   color:var(--ink);
 }
 
-
 .gallery-caption a{
   display:inline-block;
-
   margin-left:5px;
-
   color:var(--olive-dark);
-
   font-family:var(--serif);
-
   font-size:29px;
   font-weight:600;
-
   text-decoration:none;
-
   transition:opacity .2s ease;
 }
-
 
 .gallery-caption a:hover{
   opacity:.7;
 }
 
+/* VISOR DE FOTO */
 
-/* ================================
-   TABLET
-================================ */
+.gallery-lightbox{
+  position:fixed;
+  inset:0;
+  z-index:2000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:35px;
+  background:rgba(20,21,18,.94);
+}
+
+.gallery-lightbox.open{
+  display:flex;
+}
+
+.gallery-lightbox img{
+  max-width:min(92vw,1200px);
+  max-height:88vh;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+
+.gallery-lightbox-close{
+  position:absolute;
+  top:20px;
+  right:25px;
+  width:45px;
+  height:45px;
+  border:1px solid rgba(255,255,255,.5);
+  background:transparent;
+  color:#fff;
+  font-size:30px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.gallery-lightbox-close:hover{
+  background:#fff;
+  color:var(--ink);
+}
+
+/* TABLET */
 
 @media(max-width:850px){
 
@@ -309,14 +373,22 @@ h2 em,h1 em{font-style:italic;color:var(--olive)}
     padding-bottom:90px;
   }
 
-  .gallery{
-    grid-template-columns:1fr 0.9fr;
-    grid-template-rows:290px 290px;
-    gap:0;
+  .gallery-categories{
+    grid-template-columns:1fr;
   }
 
-  .gallery-card{
-    border:1px solid var(--paper);
+  .gallery-category{
+    min-height:190px;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+  }
+
+  .gallery-category:last-child{
+    border-bottom:0;
+  }
+
+  .gallery-grid{
+    grid-template-columns:repeat(2,1fr);
   }
 
   .gallery-caption{
@@ -330,10 +402,7 @@ h2 em,h1 em{font-style:italic;color:var(--olive)}
 
 }
 
-
-/* ================================
-   MÓVIL
-================================ */
+/* MÓVIL */
 
 @media(max-width:560px){
 
@@ -342,65 +411,55 @@ h2 em,h1 em{font-style:italic;color:var(--olive)}
     padding-bottom:80px;
   }
 
-  .gallery{
-
-    /* Una debajo de otra en móvil */
-    grid-template-columns:1fr;
-
-    grid-template-rows:
-      360px
-      250px
-      250px;
-
-    gap:0;
+  .gallery-category{
+    min-height:165px;
+    padding:28px 24px;
   }
 
-  .gallery-main{
-    grid-row:auto;
+  .gallery-category-title{
+    font-size:52px;
   }
 
-  .gallery-card{
-    min-height:0;
-
-    border:1px solid var(--paper);
+  .gallery-category-arrow{
+    right:24px;
+    bottom:23px;
   }
 
-  .gallery-card img,
-  .gallery-main img{
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-    object-position:center;
-
-    transform:none;
+  .gallery-view-header{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:20px;
   }
 
+  .gallery-view-header h3{
+    font-size:52px;
+  }
 
-  /* Texto Instagram */
+  .gallery-grid{
+    grid-template-columns:1fr 1fr;
+    gap:5px;
+  }
 
   .gallery-caption{
     margin-top:22px;
-
     padding:25px 14px;
-
     font-size:20px;
     line-height:1.35;
   }
 
   .gallery-caption a{
-
     display:block;
-
     margin:7px 0 0;
-
     font-size:23px;
-
     word-break:break-word;
   }
 
+  .gallery-lightbox{
+    padding:15px;
+  }
+
 }
+
 /* QUOTE */
 .quote{padding:120px 0;background:#e6ded3;text-align:center}
 .quote-mark{font:100px/0 var(--serif);color:var(--olive)}
