@@ -609,3 +609,130 @@ blockquote em{color:var(--olive-dark);font-style:italic}
   object-fit: contain;
   display: block;
 }
+
+
+/* ================================
+   NUEVA SECCIÓN: SOBRE BEATRIZ
+================================ */
+.essence-layout{
+  display:grid;
+  grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr);
+  gap:clamp(42px,7vw,100px);
+  align-items:center;
+}
+.essence-photo-wrap{
+  height:clamp(460px,48vw,650px);
+  overflow:hidden;
+  background:var(--paper2);
+}
+.essence-photo{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 42%;
+}
+.essence-copy h2{
+  font-size:clamp(50px,5.5vw,78px);
+  line-height:.92;
+  margin:20px 0 28px;
+}
+.essence-copy .lead-serif{
+  margin-top:0;
+}
+
+/* ================================
+   PRODUCTOS OFICIALES
+================================ */
+.products{
+  background:#eee7dc;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.products-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(280px,.75fr);
+  gap:clamp(45px,8vw,115px);
+  align-items:center;
+}
+.products-copy h2{
+  font-size:clamp(54px,6vw,84px);
+  margin:20px 0 28px;
+}
+.products-lead{
+  font:400 27px/1.35 var(--serif);
+  max-width:650px;
+  margin-bottom:20px;
+}
+.products-description{
+  max-width:590px;
+  font-size:14px;
+  line-height:1.9;
+  color:var(--muted);
+  margin-bottom:30px;
+}
+.products-qr-card{
+  padding:32px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  text-align:center;
+}
+.products-qr-frame{
+  width:min(100%,330px);
+  margin:0 auto 24px;
+  padding:12px;
+  background:#fff;
+  border:1px solid rgba(75,74,66,.1);
+}
+.products-qr-frame img{
+  width:100%;
+  height:auto;
+}
+.products-qr-title{
+  margin:0 0 8px;
+  font:500 30px/1.1 var(--serif);
+}
+.products-qr-note{
+  margin:0 auto;
+  max-width:300px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.7;
+}
+
+@media(max-width:850px){
+  .essence-layout,
+  .products-layout{
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+  .essence-photo-wrap{
+    height:min(115vw,620px);
+    max-height:620px;
+  }
+  .essence-copy h2{
+    font-size:clamp(50px,9vw,75px);
+  }
+  .products-copy h2{
+    font-size:clamp(52px,10vw,78px);
+  }
+  .products-qr-card{
+    width:min(100%,480px);
+    margin:0 auto;
+  }
+}
+@media(max-width:560px){
+  .essence-photo-wrap{
+    height:125vw;
+    max-height:540px;
+  }
+  .essence-copy h2{
+    font-size:53px;
+  }
+  .products-lead{
+    font-size:24px;
+  }
+  .products-qr-card{
+    padding:22px;
+  }
+}
+
